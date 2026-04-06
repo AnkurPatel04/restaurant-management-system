@@ -1,0 +1,12 @@
+.resend {
+  margin-top: 10px;
+  color: #ff7a18;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: green;
+}

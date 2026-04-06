@@ -1,0 +1,263 @@
+/* =========================
+   Main Container
+========================= */
+
+/* Whole page background */
+.explore-page {
+  min-height: 100vh;
+ background: linear-gradient(#fffaf5, #ffffff);
+  padding-bottom: 40px;
+}
+
+.explore-ui {
+  position: sticky;
+  top: 64px;                 /* navbar height */
+  z-index: 900;
+   overflow-x: hidden;
+
+  background: #fffaf5;
+  padding: 18px 24px 14px;
+
+  border-radius: 0 0 16px 16px;   /* only bottom rounded */
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+
+  max-width: 100%;
+}
+
+
+/* =========================
+   Header Layout
+========================= */
+.explore-ui .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+    max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* .table-text {
+  font-size: 15px;
+  color: #777;
+} */
+
+.explore-ui .brand-name {
+  margin: 2px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff8c2b;
+}
+
+/* =========================
+   Header Icons
+========================= */
+.explore-ui .header-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.explore-ui .icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.icon-circle:hover {
+  background: #ffe7cf;
+  transform: scale(1.05);
+}
+
+/* =========================
+   Search Bar
+========================= */
+.search-form {
+  margin-bottom: 20px;
+}
+
+.custom-search-input {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: none;
+  background: #f2f2f2;
+  font-size: 15px;
+  outline: none;
+}
+
+.custom-search-input:focus {
+  background: #ececec;
+}
+
+/* =========================
+   Category Scroll
+========================= */
+.category-scroll-wrapper {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.category-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   Category Pill
+========================= */
+.category-pill {
+  border: none;
+  background: #f3f3f3;
+  color: #333;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: 0.2s ease-in-out;
+}
+
+.category-pill:hover {
+  background: #e7e7e7;
+}
+
+/* Active Pill */
+.category-pill.active {
+  background: #ff8c2b;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(255, 140, 43, 0.35);
+}
+
+/* =========================
+   Mobile Responsive
+========================= */
+@media (max-width: 900px) {
+  .explore-ui {
+    padding: 14px 16px 10px;
+    top: 56px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .explore-ui {
+    padding: 12px 12px 8px;
+  }
+}
+
+.category-scroll-wrapper {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.category-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .category-pill {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ================= TABLE MODAL ================= */
+
+.table-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.table-modal {
+  background: #fff;
+  width: 90%;
+  max-width: 380px;
+  padding: 28px 26px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  animation: scaleIn 0.3s ease;
+}
+
+.table-modal h2 {
+  margin-bottom: 8px;
+  color: #ff7a18;
+}
+
+.table-modal p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.table-modal input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.table-modal input:focus {
+  border-color: #ff7a18;
+}
+
+.table-modal button {
+  width: 100%;
+  background: linear-gradient(135deg, #ff8a33, #ff6a00);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.table-modal button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Blur main content when modal open */
+.blurred {
+  filter: blur(3px);
+  pointer-events: none;
+}

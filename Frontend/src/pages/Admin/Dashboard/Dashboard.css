@@ -1,0 +1,268 @@
+/* ===== MAIN ===== */
+
+.dashboard .dashboard {
+  padding: 30px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== STATS GRID (3 PER ROW) ===== */
+
+.dashboard .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;                /* reduced space */
+  margin-bottom: 20px;      /* reduced bottom space */
+}
+
+.dashboard .stat-card {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.dashboard .stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard .stat-card h4 {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.dashboard .stat-card h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color:  #ff9800;
+}
+
+/* ===== CARD STYLE ===== */
+
+.dashboard .card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  margin-bottom: 25px;
+  transition: 0.3s ease;
+}
+
+/* .dashboard .card:hover {
+  transform: translateY(-3px);
+} */
+
+/* ===== TITLES ===== */
+
+.dashboard .card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.dashboard .sub-title {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+/* ===== DASHBOARD BODY ===== */
+
+.dashboard .dashboard-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+.dashboard .left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.dashboard .right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+/* ===== RECENT ORDERS CARD ===== */
+
+.dashboard .recent-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  gap: 15px;
+}
+
+/* Title */
+.dashboard .section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #ff7a18;
+}
+
+/* List */
+.dashboard .recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar */
+.dashboard .recent-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dashboard .recent-list::-webkit-scrollbar-thumb {
+  background: #ff7a18;
+  border-radius: 10px;
+}
+
+/* ===== ORDER ROW ===== */
+
+.dashboard .order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffe7cf;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border-left: 4px solid #ff7a18;
+  transition: 0.2s ease;
+}
+
+.dashboard .order-row:hover {
+  background: #ffd6b3;
+}
+
+/* ===== ORDER INFO ===== */
+
+.dashboard .order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard .table {
+  font-size: 12px;
+  color: #a65a00;
+  margin-bottom: 3px;
+}
+
+.dashboard .order-no {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ===== STATUS BADGES ===== */
+
+.dashboard .badge {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Status colors matching brand tone */
+
+.dashboard .created {
+  background: #ff7a18;
+  color: white;
+}
+
+.dashboard .confirmed {
+  background: #22c55e;
+  color: white;
+}
+
+.dashboard .served {
+  background: #94a3b8;
+  color: white;
+}
+
+.dashboard .pending {
+  background: #ef4444;
+  color: white;
+}
+
+
+/* ===== CHART CONTAINER FIX ===== */
+
+.dashboard .recharts-wrapper {
+  font-size: 12px;
+}
+/* ===== Bottom Section (Chart + Orders) ===== */
+
+.dashboard .bottom-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* ===== Top 5 Contribution Text ===== */
+
+.dashboard .top5-text {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.dashboard .top5-highlight {
+  color: #ff7a18;
+  font-weight: 600;
+  margin: 0 6px;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
+
+.dashboard .card *:focus {
+  outline: none !important;
+}

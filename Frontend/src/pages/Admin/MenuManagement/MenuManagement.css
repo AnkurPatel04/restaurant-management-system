@@ -1,0 +1,518 @@
+/* ===============================
+   MENU MANAGEMENT PAGE
+================================= */
+
+.menu-page {
+  /* padding: 28px; */
+  background: #fafafa;
+  min-height: 100vh;
+  /* font-family: "Segoe UI", system-ui, sans-serif; */
+}
+
+/* ---------- TOOLBAR ---------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 22px 0;
+}
+
+/* Search box */
+.search-input {
+  flex: 1;                  /* Takes maximum width */
+  min-width: 280px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  padding: 12px 16px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  border-color: #ff8c1a;
+}
+
+/* Category dropdown */
+.filter-select {
+  width: 220px;
+  background: #fff;
+  border-radius: 14px;
+  border: 2px solid #ff8c1a;
+  padding: 12px 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Add button */
+.add-btn {
+  margin-left: auto;     /* Push button to right */
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0px 6px 18px rgba(255, 140, 26, 0.35);
+  white-space: nowrap;
+}
+
+.add-btn:hover {
+  opacity: 0.92;
+}
+
+/* ---------- CATEGORY GRID ---------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+
+.category-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #eee;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.category-card:hover {
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.category-card.active {
+  border-color: #ff8c1a;
+}
+
+.category-card .emoji {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.category-card h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.category-card p {
+  font-size: 13px;
+  color: #777;
+}
+/* ---------- CATEGORY BADGE (TABLE + CARDS) ---------- */
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  background: #f5f1ea;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Prevent badge floating issues */
+.category-badge {
+  position: relative;
+}
+
+/* Optional hover */
+.category-badge:hover {
+  background: #ffe8cc;
+}
+
+
+/* ---------- TABLE CARD ---------- */
+/* ===============================
+   MENU TABLE CARD
+================================= */
+
+.table-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid #eee;
+  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.table-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+/* ---------- TABLE ---------- */
+
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-card thead th {
+  text-align: left;
+  font-size: 14px;
+  color: #777;
+  font-weight: 600;
+  padding: 14px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.table-card tbody td {
+  padding: 16px 10px;
+  font-size: 14px;
+  vertical-align: middle;
+  /* border-bottom: 1px solid #f1f1f1; */
+}
+.table-card tbody tr {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.table-card tbody tr:last-child {
+  border-bottom: none;
+}
+
+
+/* Hover row */
+.table-card tbody tr:hover {
+  background: #fafafa;
+}
+
+/* ---------- ITEM COLUMN ---------- */
+
+.table-card strong {
+  display: block;
+  font-size: 15px;
+  color: #222;
+}
+
+.desc {
+  font-size: 12.5px;
+  color: #888;
+  margin-top: 3px;
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- CATEGORY BADGE ---------- */
+
+.bacategory-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  background: #f4f1ec;
+  color: #333;
+  font-size: 12.5px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* ---------- PRICE + PREP ---------- */
+
+.table-card td:nth-child(3),
+.table-card td:nth-child(4) {
+  font-weight: 600;
+  color: #333;
+}
+
+/* ---------- SWITCH ---------- */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ddd;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* Checked */
+.switch input:checked + .slider {
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* ---------- ACTIONS ---------- */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.actions span {
+  transition: 0.2s ease;
+}
+
+.actions span:hover {
+  transform: scale(1.15);
+  color: red;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .desc {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 650px) {
+  .table-card {
+    padding: 16px;
+  }
+
+  .table-card table {
+    font-size: 13px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+/* ===============================
+   ADD / EDIT MENU MODAL
+================================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-box {
+  width: 520px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 26px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- HEADER ---------- */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+
+.modal-header span {
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-header span:hover {
+  color: #333;
+}
+
+/* ---------- FORM ELEMENTS ---------- */
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin-bottom: 14px;
+  outline: none;
+  background: #fff;
+}
+
+.modal-box textarea {
+  resize: none;
+  min-height: 90px;
+}
+
+.modal-box input:focus,
+.modal-box textarea:focus,
+.modal-box select:focus {
+  border-color: #ff8c1a;
+  box-shadow: 0 0 0 2px rgba(255, 140, 26, 0.15);
+}
+
+/* ---------- TWO COLUMN ROW ---------- */
+
+.modal-box .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ---------- IMAGE UPLOAD ---------- */
+
+.image-upload {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.image-box {
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  border: 2px dashed #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+  background: #fafafa;
+}
+
+.image-box:hover {
+  border-color: #ff8c1a;
+  background: #fff6eb;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ---------- TOGGLE (AVAILABLE) ---------- */
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ---------- FOOTER ---------- */
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.modal-footer button {
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+/* Cancel */
+.modal-footer button:first-child {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.modal-footer button:first-child:hover {
+  background: #f5f5f5;
+}
+
+/* Add Item */
+.modal-footer .primary {
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255, 140, 26, 0.35);
+}
+
+.modal-footer .primary:hover {
+  opacity: 0.9;
+}

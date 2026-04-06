@@ -1,0 +1,206 @@
+/* ================================
+   Food Card
+================================ */
+.food-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  max-width: 360px;
+  width: 100%;
+  margin: auto;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.12);
+}
+
+/* ================================
+   Food Image
+================================ */
+.food-card .food-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ================================
+   Card Content
+================================ */
+.food-card .food-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.food-card .food-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.food-card .food-info p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+/* ================================
+   Price + Rating
+================================ */
+.food-card .food-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.food-card .price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff8c2b;
+}
+
+.food-card .rating {
+  font-size: 13px;
+  color: #ffb703;
+}
+
+/* ================================
+   Buttons Section
+================================ */
+.food-card .food-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   /* force left */
+  width: 100%;
+}
+
+.food-card .add-btn {
+  background: linear-gradient(135deg, #ff8c2b, #ff6a00);
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+  box-shadow: 0px 6px 14px rgba(255, 140, 43, 0.35);
+  margin-right: auto; 
+}
+
+
+
+.food-card .add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 20px rgba(255, 140, 43, 0.45);
+}
+
+/* Push quantity section to right */
+.food-card .quantity-controls,
+.food-card .food-actions > button.fav-btn {
+  margin-left: auto;
+}
+
+/* ================================
+   Quantity Controls
+================================ */
+.food-card .quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.food-card .fav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #ff8c2b;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.food-card .fav-btn:hover {
+  background: #ff7a10;
+}
+
+.food-card .fav-btn:active {
+  transform: scale(0.9);
+}
+
+.food-card .quantity {
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 22px;
+  text-align: center;
+}
+
+/* ================================
+   Responsive Design
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .food-card {
+    max-width: 100%;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .food-card .food-image {
+    height: 180px;
+  }
+
+  .food-card .food-info h3 {
+    font-size: 16px;
+  }
+
+  .food-card .food-info p {
+    font-size: 12px;
+  }
+
+  .food-card .add-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .food-card .fav-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .food-card .food-actions {
+    flex-direction: column;
+    align-items: stretch;
+     gap: 20px;   
+  }
+
+  .food-card .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .food-card .quantity-controls,
+  .food-card .food-actions > button.fav-btn {
+    margin-left: 0;
+    align-self: center;
+  }
+}

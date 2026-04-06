@@ -1,0 +1,222 @@
+.order-success {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #fff1dc, #fffaf3);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Glow background */
+.order-success .success-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,140,0,0.25), transparent 70%);
+  filter: blur(80px);
+  animation: pulseGlow 4s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(1.15); opacity: 1; }
+}
+
+/* Card */
+.order-success .premium {
+  position: relative;
+  background: #fff;
+  padding: 60px 75px;
+  border-radius: 28px;
+  text-align: center;
+  width: 560px;
+  max-width: 92%;
+  box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.12);
+  animation: floatCard 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Tick */
+.order-success .check-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.order-success .check-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #16a34a, #21c55e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 
+    0px 12px 30px rgba(33, 197, 94, 0.65),
+    0px 0px 25px rgba(33, 197, 94, 0.45);
+}
+
+
+.order-success .check-circle::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+border: 3px solid rgba(33, 197, 94, 0.6);
+
+  animation: rotateRing 4s linear infinite;
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.order-success .check-icon {
+  font-size: 56px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-5px); }
+}
+
+/* Title */
+.order-success .success-title {
+  font-size: 38px;
+  font-weight: 800;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+
+.order-success .title-dark {
+  color: #222;
+}
+.order-success .title-gradient {
+  background: linear-gradient(135deg, #16a34a, #21c55e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+
+
+
+/* Subtitle */
+.order-success .subtitle {
+  margin-bottom: 14px;
+  font-size: 17px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Redirect text */
+.order-success .redirect-text {
+  margin-bottom: 28px;
+  font-size: 20px;
+  color: #777;
+}
+
+/* Buttons */
+.order-success .success-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.order-success .btn-primary1{
+    background: #ff7a18;
+    border: none;
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0px 10px 25px rgba(255, 106, 0, 0.4);
+}
+
+
+.order-success .btn-primary1:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0px 12px 25px rgba(255, 122, 24, 0.45);
+}
+
+.order-success .btn-outline {
+  background: transparent;
+  border: 2px solid #ff7a18;
+  color: #ff7a18;
+  padding: 14px 36px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.order-success .btn-outline:hover {
+  background: #ff7a18;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+
+  .order-success .success-glow{
+    width:300px;
+    height:300px;
+  }
+
+  .order-success .premium{
+    padding:40px 24px;
+    border-radius:22px;
+  }
+
+  .order-success .check-circle{
+    width:80px;
+    height:80px;
+  }
+
+  .order-success .check-icon{
+    font-size:40px;
+  }
+
+  .order-success .success-title{
+    font-size:26px;
+    line-height:1.3;
+  }
+
+  .order-success .redirect-text{
+    font-size:16px;
+  }
+
+  .order-success .success-buttons{
+    flex-direction:column;
+    gap:14px;
+    margin-top:28px;
+  }
+
+  .order-success .btn-primary1,
+  .order-success .btn-outline{
+    width:100%;
+    padding:14px;
+    font-size:15px;
+  }
+
+}

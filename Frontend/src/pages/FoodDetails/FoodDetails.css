@@ -1,0 +1,138 @@
+/* ===============================
+   Page Wrapper
+================================ */
+.food-details-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(#fffaf5, #ffffff);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===============================
+   Main Card
+================================ */
+.food-details {
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0px 15px 40px rgba(0,0,0,0.1);
+  max-width: 1100px;
+  width: 100%;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+}
+
+/* ===============================
+   Image
+================================ */
+.food-details-image {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* ===============================
+   Content
+================================ */
+.food-details-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.food-details-content h2 {
+  font-size: 32px;
+  margin: 12px 0 8px;
+  color: #1f2933;
+}
+
+.food-details-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+/* Price */
+.food-details-content h3 {
+  font-size: 26px;
+  color: #ff7a10;
+  margin-bottom: 24px;
+}
+
+/* ===============================
+   Category Badge
+================================ */
+.category-badge {
+  background: #fff3e4;
+  color: #c2410c;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  width: fit-content;
+  font-weight: 600;
+}
+
+/* ===============================
+   Button
+================================ */
+.add-cart-btn {
+  width: fit-content;
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #ff8c2b, #ff6a00);
+  color: #ffffff;
+
+  box-shadow: 0px 10px 20px rgba(255, 140, 43, 0.45);
+  transition: 0.25s ease;
+}
+
+.add-cart-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 14px 28px rgba(255, 140, 43, 0.6);
+}
+
+/* ===============================
+   Responsive Design
+================================ */
+@media (max-width: 900px) {
+  .food-details {
+    grid-template-columns: 1fr;
+  }
+
+  .food-details-image {
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-details-wrapper {
+    padding: 20px 12px;
+  }
+
+  .food-details {
+    padding: 20px;
+  }
+
+  .food-details-content h2 {
+    font-size: 24px;
+  }
+
+  .food-details-content h3 {
+    font-size: 22px;
+  }
+
+  .add-cart-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

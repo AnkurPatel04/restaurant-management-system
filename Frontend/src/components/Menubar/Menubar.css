@@ -1,0 +1,312 @@
+/* ============================
+   Navbar Container
+============================ */
+.menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-sizing: border-box;
+ 
+
+  
+
+}
+
+
+/* ============================
+   Left Section
+============================ */
+.menubar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menubar-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;     
+  border-radius: 50%;     /* Makes it round */
+  /* padding: 5px;       */
+  background-color: #ffffff; 
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);  */
+}
+
+
+.menu-links {
+  display: flex;
+  gap: 22px;
+}
+
+.menubar-brand-name {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f2933;
+  transition: 0.2s ease;
+}
+
+.menubar-brand-name:hover {
+  color: #ff8c2b;
+}
+
+/* ============================
+   Right Section
+============================ */
+.menubar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Cart */
+.cart-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.menubar-cart {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ff8c2b;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.menubar-button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #22c55e;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.menubar-button:hover {
+  background: #22c55e;
+  color: white;
+}
+
+.menubar-signup-button {
+  background: #22c55e;
+  color: white;
+}
+
+/* ============================
+   Profile Dropdown
+============================ */
+.dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 0px; /* 👈 this fixes flicker */
+}
+
+
+/* Profile image */
+.dropdown-wrapper img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+   top: 100%;
+  margin-top: -5px;     /* 👈 closer to avatar */
+  right: 0;         /* align with profile */
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.15);
+  display: none;
+  min-width: 120px;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+/* Show on hover */
+.dropdown-wrapper:hover .dropdown-menu {
+  display: block;
+}
+
+/* Items */
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+
+/* ============================
+   Hamburger Menu
+============================ */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ============================
+   Mobile Menu
+============================ */
+.mobile-menu {
+  position: fixed;
+  top: 64px;
+  right: 12px;
+  width: 280px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0px 20px 40px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  gap: 6px;
+  z-index: 999;
+
+  animation: slideDown 0.25s ease;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #1f2933;
+  font-size: 15px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.mobile-menu a:hover {
+  background: #f3f4f6;
+}
+
+.mobile-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 8px 0;
+}
+.mobile-auth {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.mobile-auth button {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #22c55e;
+  background: transparent;
+  transition: 0.2s ease;
+}
+
+.mobile-auth button:hover {
+  background: #22c55e;
+  color: white;
+}
+
+.mobile-auth .signup {
+  background: #22c55e;
+  color: white;
+}
+/* ============================
+   Responsive Design
+============================ */
+@media (max-width: 768px) {
+  .menu-links {
+    display: none;
+  }
+
+  .auth-buttons {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .menubar {
+    padding: 0 14px;
+    height: 56px;
+  }
+
+  body {
+    padding-top: 56px;
+  }
+
+  .menubar-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hamburger {
+    font-size: 24px;
+  }
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-menu {
+    width: 240px;
+    right: 8px;
+  }
+}
+
+.user-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ff7a18;
+  white-space: nowrap;
+}

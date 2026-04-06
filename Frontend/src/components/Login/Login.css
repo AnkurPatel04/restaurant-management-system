@@ -1,0 +1,128 @@
+/* ================= LOGIN PAGE ================= */
+
+.signin-page {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #fff7ed, #fffdf9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card */
+.signin-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Title */
+.signin-card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #2d2d2d;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* Inputs */
+.signin-card input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  font-size: 15px;
+  margin-bottom: 16px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.signin-card input:focus {
+  border-color: #ff7a18;
+  box-shadow: 0 0 0 2px rgba(255,122,24,0.15);
+}
+
+/* Button */
+.signin-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #ff8a33, #ff6a00);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(255,122,24,0.4);
+}
+
+.signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255,122,24,0.55);
+}
+
+/* Text links */
+.signup-text {
+  margin-top: 14px;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}
+
+.signup-text span,
+.signup-text a {
+  color: #ff7a18;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signup-text span:hover,
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.forgot-link {
+  text-align: right;
+  font-size: 14px;
+  color: #ff7a18;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+  .signin-card {
+    padding: 28px 20px;
+  }
+
+  .signin-card h2 {
+    font-size: 22px;
+  }
+
+  .signin-btn {
+    font-size: 15px;
+  }
+}

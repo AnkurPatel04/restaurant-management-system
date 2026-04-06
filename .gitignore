@@ -1,0 +1,35 @@
+############################
+# GENERAL
+############################
+.DS_Store
+*.log
+
+############################
+# FRONTEND (React + Vite)
+############################
+Frontend/node_modules/
+Frontend/dist/
+Frontend/build/
+Frontend/.env
+Frontend/.env.*
+Frontend/.vite
+
+############################
+# BACKEND (Spring Boot + Maven)
+############################
+Backend/target/
+Backend/*.log
+Backend/.env
+Backend/src/main/resources/application.properties
+############################
+# IDE FILES
+############################
+.idea/
+.vscode/
+*.iml
+
+############################
+# OS FILES
+############################
+.DS_Store
+Thumbs.db

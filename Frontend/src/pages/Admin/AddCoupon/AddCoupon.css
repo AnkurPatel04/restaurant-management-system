@@ -1,0 +1,95 @@
+/* .coupon-container{
+  max-width:450px;
+  margin:auto;
+  padding:30px;
+}
+
+.coupon-form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.coupon-form input,
+.coupon-form select{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+}
+
+.coupon-form button{
+  padding:12px;
+  background:#ff6b00;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.coupon-form button:hover{
+  background:#e65c00;
+} */
+
+.coupon-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ACTION BAR */
+
+.coupon-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coupon-actions input {
+  width: 260px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+/* TABLE */
+
+.coupon-table {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.coupon-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.coupon-table th {
+  text-align: left;
+  color: #666;
+  padding-bottom: 10px;
+}
+
+.coupon-table td {
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+}
+
+/* BADGES */
+
+.coupon-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.PERCENT {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+
+.FLAT {
+  background: #e8f5e9;
+  color: #2e7d32;
+}

@@ -1,0 +1,45 @@
+/* Header container */
+.header {
+  width: 100%;
+  background-color: #f9fafb;
+  padding: 80px 60px;
+  box-sizing: border-box;
+}
+
+/* Content wrapper */
+.header-content {
+  max-width: 900px;
+}
+
+/* Main title */
+.header-title {
+  font-size: 56px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.header-subtitle {
+  font-size: 20px;
+  color: #4b5563;
+  margin-bottom: 32px;
+}
+
+/* Explore button */
+.header-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.header-button:hover {
+  background-color: #1e40af;
+}

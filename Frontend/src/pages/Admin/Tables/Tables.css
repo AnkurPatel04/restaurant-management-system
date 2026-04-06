@@ -1,0 +1,301 @@
+/* ===============================
+   TABLE MANAGEMENT PAGE
+================================= */
+
+.tables-page {
+  padding: 30px;
+  background: #fafafa;
+  min-height: 100vh;
+  /* font-family: "Segoe UI", sans-serif; */
+}
+
+/* ---------- HEADER ---------- */
+.tables-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.tables-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* ---------- ADD BUTTON ---------- */
+.add-btn {
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ---------- GRID ---------- */
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+/* ---------- TABLE CARD ---------- */
+.table-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 2px solid #eee;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+}
+
+.table-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- STATUS BORDER COLORS ---------- */
+.table-card.available {
+  border-color: #b7ebc6;
+  background: #f4fff7;
+}
+
+.table-card.occupied {
+  border-color: #bcdcff;
+  background: #f3f8ff;
+}
+
+.table-card.reserved {
+  border-color: #ffd9b3;
+  background: #fff7ee;
+}
+
+.table-card.payment-pending {
+  border-color: #ffe2a8;
+  background: #fffaf0;
+}
+
+/* ---------- TOP ROW ---------- */
+.table-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-number {
+  width: 46px;
+  height: 46px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- STATUS BADGE ---------- */
+.status-badge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.table-card.available .status-badge {
+  background: #2ecc71;
+}
+
+.table-card.occupied .status-badge {
+  background: #3498db;
+}
+
+.table-card.reserved .status-badge {
+  background: #f39c12;
+}
+
+.table-card.payment-pending .status-badge {
+  background: #e67e22;
+}
+/* ---------- TEXT ---------- */
+.table-card p {
+  margin: 10px 0;
+  font-weight: 500;
+  color: #555;
+}
+
+/* ---------- DROPDOWN ---------- */
+.table-card select {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+.table-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.table-actions button {
+  flex: 1;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.table-actions button:hover {
+  background: #f4f4f4;
+}
+
+/* ===============================
+   MODAL STYLES
+================================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  width: 480px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 25px 28px;
+  animation: popup 0.2s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- MODAL HEADER ---------- */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.close-btn {
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+.subtitle {
+  margin: 8px 0 18px;
+  color: #777;
+}
+
+/* ---------- FORM ---------- */
+label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  border-color: #ff8c1a;
+  box-shadow: 0 0 0 2px rgba(255, 140, 26, 0.15);
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+/* ---------- FOOTER BUTTONS ---------- */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.btn-cancel {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background: #f5f5f5;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-save:hover {
+  opacity: 0.9;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .modal-box {
+    width: 92%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+}

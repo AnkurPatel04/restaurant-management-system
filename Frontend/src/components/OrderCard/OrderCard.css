@@ -1,0 +1,146 @@
+/* ===== CARD ===== */
+.order-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== TOP ROW ===== */
+/* ===== TOP ROW ===== */
+.order-card .top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* LEFT */
+.order-card .left {
+  display: flex;
+  flex-direction: column;
+      gap: 10px;
+}
+
+.order-card .oid {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* sub text */
+.order-card .sub {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== RIGHT ===== */
+.order-card .right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.order-card .amt {
+  font-size: 20px;
+  font-weight: 800;
+  color: #222;
+}
+/* ===== STATUS PILL ===== */
+.order-card .pill {
+  margin-left: -7px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.order-card .CREATED { background: #f59e0b; color: black; }
+.order-card .COOKING { background: #3b82f6; color: white; }
+.order-card .READY { background: #22c55e; color: black; }
+.order-card .SERVED { background: #6b7280; color: white; }
+
+/* ===== STEPS ===== */
+.order-card .steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* Step container */
+.order-card .step-item {
+  flex: 1;
+  position: relative;
+  text-align: center;
+}
+
+/* Circle */
+.order-card .step-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  margin: 0 auto 6px;
+  z-index: 2;
+  position: relative;
+}
+
+.order-card .step-circle.active {
+  background: linear-gradient(135deg, #ff8c32, #ff6a00);
+  color: #fff;
+}
+
+/* -------- LINE BETWEEN STEPS -------- */
+.order-card .step-line {
+  position: absolute;
+  top: 21px;               /* center of circle */
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  background: #e5e5e5;
+  z-index: 1;
+}
+
+.order-card .step-line.active {
+  background: linear-gradient(to right, #e5e5e5, #ff8c32);
+}
+/* Label */
+.order-card .step-label {
+  font-size: 11px;
+  color: #777;
+}
+
+/* ===== ITEMS ===== */
+.order-card .items {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #555;
+}
+
+.order-card .more {
+  color: #ff7a18;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* ===== HR ===== */
+.order-card hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 6px 0;
+}
