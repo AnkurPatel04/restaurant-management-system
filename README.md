@@ -28,7 +28,6 @@ The application supports fine-grained access control with distinct dashboards an
 *   **Main Admin:** Manages restaurant accounts, system configurations, and high-level platform administration.
 *   **Restaurant Admin:** Full control over menu items (categories, prices, active status), table management, coupon creation, staff registration, and sales analytics.
 *   **Chef (Kitchen Staff):** Real-time access to the **Kitchen Display System (KDS)** to view pending orders, prioritize preparation, and update order statuses (e.g., Cooking, Ready).
-*   **Cashier & Waiter:** Manage table orders, issue bills, and update order states.
 *   **Customer (User):** Register/login, browse foods, manage cart, apply coupons, make secure payments, track active orders, and reserve dining tables.
 
 ### 📱 Dine-In QR Code Ordering
