@@ -14,7 +14,7 @@ import java.util.Map;
 @RequestMapping("/api/payment")
 public class StripeController {
 
-    @Value("${stripe.secret.key}")
+    @Value("${stripe.secret.key:}")
     private String stripeKey;
 
     @Value("${app.frontend.url:https://restaurant-ordering-system-phi.vercel.app}")

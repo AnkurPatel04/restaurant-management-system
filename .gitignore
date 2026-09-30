@@ -20,7 +20,6 @@ Frontend/.vite
 Backend/target/
 Backend/*.log
 Backend/.env
-Backend/src/main/resources/application.properties
 ############################
 # IDE FILES
 ############################
