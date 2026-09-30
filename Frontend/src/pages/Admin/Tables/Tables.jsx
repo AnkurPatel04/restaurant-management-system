@@ -8,6 +8,7 @@ const Tables = () => {
   const [tables, setTables] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editingTable, setEditingTable] = useState(null);
+  const [qrModalTable, setQrModalTable] = useState(null);
 
   const [form, setForm] = useState({
     tableNumber: "",
@@ -187,6 +188,7 @@ const Tables = () => {
             </select>
 
             <div className="table-actions">
+              <button className="qr-btn" onClick={() => setQrModalTable(table)}>📱 QR</button>
               <button onClick={() => openEditModal(table)}>✏️ Edit</button>
               <button onClick={() => handleDelete(table.id)}>🗑️</button>
             </div>
@@ -251,6 +253,88 @@ const Tables = () => {
 
               <button className="btn-save" onClick={handleSave}>
                 {editingTable ? "Update Table" : "Add Table"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* ---------------- QR MODAL ---------------- */}
+      {qrModalTable && (
+        <div className="modal-backdrop">
+          <div className="modal-box qr-modal-box">
+            <div className="modal-header">
+              <h3>Table {qrModalTable.tableNumber} QR Code</h3>
+              <span className="close-btn" onClick={() => setQrModalTable(null)}>
+                ✖
+              </span>
+            </div>
+
+            <p className="subtitle">
+              Customers scan this QR code to view the menu and place dine-in orders at Table {qrModalTable.tableNumber}.
+            </p>
+
+            <div className="qr-preview-container">
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
+                  `${window.location.origin}/r/${restaurantId}/t/${qrModalTable.tableNumber}`
+                )}`}
+                alt={`Table ${qrModalTable.tableNumber} QR`}
+                className="qr-image"
+              />
+              <p className="qr-url-text">
+                {`${window.location.origin}/r/${restaurantId}/t/${qrModalTable.tableNumber}`}
+              </p>
+            </div>
+
+            <div className="modal-footer">
+              <button
+                className="btn-cancel"
+                onClick={() => setQrModalTable(null)}
+              >
+                Close
+              </button>
+              <button
+                className="btn-save"
+                onClick={() => {
+                  const printWin = window.open("", "_blank");
+                  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(
+                    `${window.location.origin}/r/${restaurantId}/t/${qrModalTable.tableNumber}`
+                  )}`;
+                  printWin.document.write(`
+                    <html>
+                      <head>
+                        <title>Table ${qrModalTable.tableNumber} - RestroX QR Standee</title>
+                        <style>
+                          body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 90vh; margin: 0; background: #fff; }
+                          .standee { border: 3px solid #ff7a18; border-radius: 24px; padding: 40px 30px; text-align: center; max-width: 320px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+                          .logo { font-size: 26px; font-weight: 800; color: #ff7a18; margin-bottom: 5px; }
+                          .badge { display: inline-block; background: #ff7a18; color: #fff; padding: 6px 18px; border-radius: 20px; font-weight: 700; font-size: 18px; margin: 10px 0 15px; }
+                          .qr-code { width: 220px; height: 220px; margin: 10px auto; border-radius: 12px; border: 1px solid #eee; padding: 8px; }
+                          .hint { font-size: 15px; font-weight: 600; color: #222; margin: 15px 0 5px; }
+                          .steps { font-size: 12px; color: #666; line-height: 1.6; }
+                          @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+                        </style>
+                      </head>
+                      <body onload="window.print()">
+                        <div class="standee">
+                          <div class="logo">🍽️ RestroX</div>
+                          <div class="badge">TABLE ${qrModalTable.tableNumber}</div>
+                          <br/>
+                          <img class="qr-code" src="${qrUrl}" alt="QR" />
+                          <div class="hint">Scan to Order & Pay</div>
+                          <div class="steps">
+                            1. Open camera & scan QR<br/>
+                            2. Select your favourite dishes<br/>
+                            3. Food served to Table ${qrModalTable.tableNumber}!
+                          </div>
+                        </div>
+                      </body>
+                    </html>
+                  `);
+                  printWin.document.close();
+                }}
+              >
+                🖨️ Print Standee
               </button>
             </div>
           </div>

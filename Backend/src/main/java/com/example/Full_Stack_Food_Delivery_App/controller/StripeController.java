@@ -17,6 +17,9 @@ public class StripeController {
     @Value("${stripe.secret.key}")
     private String stripeKey;
 
+    @Value("${app.frontend.url:https://restaurant-ordering-system-phi.vercel.app}")
+    private String frontendUrl;
+
     @PostMapping("/create-session")
     public Map<String, String> createSession(@RequestBody PaymentDTO dto) throws Exception {
 
@@ -38,8 +41,8 @@ public class StripeController {
                                         .build()
                         )
 
-                        .setSuccessUrl("https://restaurant-ordering-system-phi.vercel.app/payment-success")
-                        .setCancelUrl("https://restaurant-ordering-system-phi.vercel.app/payment-failed")
+                        .setSuccessUrl(frontendUrl + "/payment-success")
+                        .setCancelUrl(frontendUrl + "/payment-failed")
 
                         // metadata useful later (webhook / order update)
                         .putMetadata("restaurantId", dto.getRestaurantId())

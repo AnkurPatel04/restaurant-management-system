@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 
 
 # ---------- Stage 2: Run ----------
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
@@ -17,4 +17,5 @@ COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+# Limit heap memory to 384MB to prevent Render 512MB RAM container OOM crash
+CMD ["java", "-Xmx384m", "-Xss512k", "-XX:+UseContainerSupport", "-jar", "app.jar"]

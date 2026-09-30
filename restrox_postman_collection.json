@@ -1,0 +1,741 @@
+{
+	"info": {
+		"_postman_id": "84d7be1a-b68a-40a2-9e8c-529a6b61df4b",
+		"name": "RestroX - Restaurant Ordering System",
+		"description": "Comprehensive Postman collection for RestroX (Restaurant Ordering & Management System). Features auth workflows, admin tasks, restaurant onboarding, menu setups, and order processes.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Register Main Admin / User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Super Admin\",\n  \"email\": \"mainadmin@restrox.com\",\n  \"password\": \"Password@123\",\n  \"role\": \"MAIN_ADMIN\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Registers a new user in the system. Use role 'MAIN_ADMIN' to bootstrap the high-level platform administrator."
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.token) {",
+									"        pm.collectionVariables.set(\"jwt_token\", jsonData.token);",
+									"        pm.collectionVariables.set(\"user_id\", jsonData.userId);",
+									"        if (jsonData.restaurantId) {",
+									"            pm.collectionVariables.set(\"restaurant_id\", jsonData.restaurantId);",
+									"        }",
+									"        console.log(\"Saved tokens and IDs successfully!\");",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"mainadmin@restrox.com\",\n  \"password\": \"Password@123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Login credentials for retrieving a signed JWT Bearer Token. Saves parameters dynamically into environment variables."
+					},
+					"response": []
+				},
+				{
+					"name": "Send OTP (Passwordless Login)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"mainadmin@restrox.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/send-otp",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"send-otp"
+							]
+						},
+						"description": "Sends a security passcode to the user's registered email via SMTP."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.token) {",
+									"        pm.collectionVariables.set(\"jwt_token\", jsonData.token);",
+									"        pm.collectionVariables.set(\"user_id\", jsonData.userId);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"mainadmin@restrox.com\",\n  \"otp\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/verify-otp",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"verify-otp"
+							]
+						},
+						"description": "Verifies the email passcode and logs the user in if the token hasn't expired."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Main Admin Operations",
+			"item": [
+				{
+					"name": "Create Restaurant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200 || pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.id) {",
+									"        pm.collectionVariables.set(\"restaurant_id\", jsonData.id);",
+									"        console.log(\"Saved restaurant_id: \" + jsonData.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Bella Italia\",\n  \"address\": \"123 Gourmet Boulevard, Food City\",\n  \"phone\": \"+1234567890\",\n  \"email\": \"contact@bellaitalia.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/main-admin/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"main-admin",
+								"restaurants"
+							]
+						},
+						"description": "Creates a new restaurant branch in the system. Requires MAIN_ADMIN authorization."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Restaurants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/main-admin/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"main-admin",
+								"restaurants"
+							]
+						},
+						"description": "Retrieves lists of all restaurants onboarded."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Restaurant Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Chef Mario\",\n  \"email\": \"mario@bellaitalia.com\",\n  \"password\": \"ChefPassword@123\",\n  \"restaurantId\": \"{{restaurant_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/main-admin/restaurant-admin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"main-admin",
+								"restaurant-admin"
+							]
+						},
+						"description": "Onboards a RESTAURANT_ADMIN to manage menu catalogs, table setups, staff, and pricing configuration."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Restaurant Admin Operations",
+			"item": [
+				{
+					"name": "Add Dining Table",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tableNumber\": 5,\n  \"seats\": 4,\n  \"status\": \"AVAILABLE\",\n  \"restaurantId\": \"{{restaurant_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tables",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tables"
+							]
+						},
+						"description": "Creates a physical dining table with seat details for customers or waiters."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Menu Item (Food)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "food",
+									"value": "{\n  \"name\": \"Margherita Pizza\",\n  \"description\": \"Fresh basil, mozzarella, and dynamic tomato sauce\",\n  \"price\": 299.0,\n  \"category\": \"Pizza\",\n  \"active\": true,\n  \"restaurantId\": \"{{restaurant_id}}\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "Food Cover Image File to Upload to Cloudinary CDN",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/foods/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods",
+								"add"
+							]
+						},
+						"description": "Uploads a food menu item using multipart/form-data. Requires key 'food' (JSON) and key 'file' (Image asset)."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Staff Member (Chefs/Waiters)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"restaurantId\": \"{{restaurant_id}}\",\n  \"name\": \"Chef Luigi\",\n  \"email\": \"luigi@bellaitalia.com\",\n  \"phone\": \"+1987654321\",\n  \"role\": \"CHEF\",\n  \"active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/staff",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"staff"
+							]
+						},
+						"description": "Creates a role-restricted operational staff profile. Roles include 'CHEF', 'WAITER', 'CASHIER'."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Promo Coupon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"WELCOME10\",\n  \"discount\": 10.0,\n  \"type\": \"PERCENT\",\n  \"active\": true,\n  \"expiryDate\": \"2026-12-31\",\n  \"restaurantId\": \"{{restaurant_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/coupons/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"coupons",
+								"create"
+							]
+						},
+						"description": "Registers a new coupon code. Types supported: 'PERCENT' or 'FLAT'."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Customer Operations",
+			"item": [
+				{
+					"name": "Add Items to Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodId\": \"60c72b2f9b1d8a2c2c8f8abc\",\n  \"tableNo\": 5,\n  \"restaurantId\": \"{{restaurant_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cart",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Adds a food item to the table's digital cart. Requires a valid table configuration."
+					},
+					"response": []
+				},
+				{
+					"name": "Place Table Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.id) {",
+									"        pm.collectionVariables.set(\"order_id\", jsonData.id);",
+									"        console.log(\"Saved active order_id: \" + jsonData.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"{{user_id}}\",\n  \"amount\": 299.0,\n  \"orderedItems\": [\n    {\n      \"foodId\": \"60c72b2f9b1d8a2c2c8f8abc\",\n      \"quantity\": 1,\n      \"price\": 299.0,\n      \"category\": \"Pizza\",\n      \"name\": \"Margherita Pizza\"\n    }\n  ],\n  \"orderStatus\": \"CREATED\",\n  \"tableNumber\": 5,\n  \"customerName\": \"DineIn Guest\",\n  \"restaurantId\": \"{{restaurant_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Submits cart contents as a kitchen-facing order. Instantly triggers WebSocket broadcast notifications to the chef's KDS."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Stripe Payment Session",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"restaurantId\": \"{{restaurant_id}}\",\n  \"tableNumber\": 5,\n  \"amount\": 299.0,\n  \"paymentMethod\": \"CARD\",\n  \"couponCode\": \"\",\n  \"discount\": 0.0\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payment/create-session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"create-session"
+							]
+						},
+						"description": "Creates a hosted Stripe checkout session for credit/debit card billing. Returns a payment redirection URL."
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Bill Payment (Cash/Card)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"paymentMethod\": \"CASH\",\n  \"couponCode\": \"WELCOME10\",\n  \"discount\": 29.9\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders/{{restaurant_id}}/pay/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"{{restaurant_id}}",
+								"pay",
+								"5"
+							]
+						},
+						"description": "Updates order checkout flags to PAID, releases table availability block, and sets active discount margins."
+					},
+					"response": []
+				},
+				{
+					"name": "Download PDF Invoice Receipt",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \"{{order_id}}\"\n]"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders/invoice",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"invoice"
+							]
+						},
+						"description": "Generates and downloads a print-ready billing receipt PDF containing orders summary."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "restaurant_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

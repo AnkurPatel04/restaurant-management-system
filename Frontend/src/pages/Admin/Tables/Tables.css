@@ -166,6 +166,47 @@
   background: #f4f4f4;
 }
 
+.table-actions .qr-btn {
+  background: #fff4e5;
+  border-color: #ffd8a8;
+  color: #d9480f;
+  font-weight: 600;
+}
+
+.table-actions .qr-btn:hover {
+  background: #ffe8cc;
+}
+
+/* ---------- QR PREVIEW MODAL ---------- */
+.qr-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+  padding: 15px;
+  background: #fdfdfd;
+  border: 1px dashed #ffd8a8;
+  border-radius: 16px;
+}
+
+.qr-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.qr-url-text {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #888;
+  word-break: break-all;
+  text-align: center;
+}
+
 /* ===============================
    MODAL STYLES
 ================================= */
